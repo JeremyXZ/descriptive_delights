@@ -1,95 +1,62 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client';
 
-export default function Home() {
+import styled from "styled-components"
+
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <Wrapper >
+        <HeadWrapper>Share and Shine in Descriptive Writing
+            <br />
+            <Span>Descriptive Quotes</Span>
+        </HeadWrapper>
+        <Paragraph>
+            This is a descriptive scenes gallery where you can sumbit the amazing descriptive and imagery 
+            expressions you've found in your reading and share with other students.
+        </Paragraph>
+    
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+`
+const HeadWrapper = styled.h1`
+  margin-top: 1.25rem; 
+  font-size: 3.75rem; 
+  font-weight: 800;
+  line-height: 1.15;
+  color: #000000;
+  text-align: center;
+  @media (min-width: 640px) {  
+    font-size: 4rem;   
+}
+`
+
+const Span = styled.span`
+  text-align: center;
+  background-image: linear-gradient(to right, #FFBF00, #FF8000, #FFFF00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+`
+
+const Paragraph = styled.p`
+  margin-top: 1.25rem; 
+  font-size: 1.125rem; 
+  color: #6B7280;
+  max-width: 36rem; 
+  text-align: center;
+
+
+@media (min-width: 640px) { 
+    font-size: 1.25rem;   
+}
+`
+export default Home

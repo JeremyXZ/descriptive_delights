@@ -1,5 +1,5 @@
 
-A web site for students to share imagery and emotive sentence (verbatim quotes) they've come across in their reading so as to improve their descriptive writing at schools.
+A web site for students to share imagery and emotive sentences (verbatim quotes) they've come across in their reading so as to improve their descriptive writing at schools.
 
 Major features to include:
 - authenfication: need register and sign-in  with username and password, a verified user can submit and edit their own quotes 
