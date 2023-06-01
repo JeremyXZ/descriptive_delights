@@ -5,8 +5,8 @@ import styled from "styled-components"
 const Home = () => {
   return (
     <Wrapper >
-        <HeadWrapper>Share and Shine in Descriptive Writing
-            <br />
+        <HeadWrapper>Collect and Share
+            <LineBreak />
             <Span>Descriptive Quotes</Span>
         </HeadWrapper>
         <Paragraph>
@@ -37,10 +37,20 @@ const HeadWrapper = styled.h1`
     font-size: 4rem;   
 }
 `
+const LineBreak = styled.div`
+  &::before {
+    content: ' ';
+    white-space: pre-line;
+    } 
+    @media (max-width: 768px) {
+    display: none;
+}
+    
+`;
 
 const Span = styled.span`
   text-align: center;
-  background-image: linear-gradient(to right, #FFBF00, #FF8000, #FFFF00);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

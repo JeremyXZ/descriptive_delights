@@ -1,14 +1,16 @@
 "use client"
-
+import React, {ReactNode} from "react";
 import styled from 'styled-components';
 
-export const matadata= {
+const matadata= {
     title: "Descriptive Delights",
     description: "Share descriptive quotes and shine in descriptive writing"
 }
 
-
-const RootLayout = ({children}) => {
+interface Props {
+    children: React.ReactNode;
+  }
+const RootLayout = ({children}: {children: ReactNode}) => {
   return (
     <html lang='en'>
         <body>
@@ -107,4 +109,5 @@ const AppWrapper = styled.main`
 `
 
 
-export default RootLayout
+export default RootLayout 
+export {matadata}
