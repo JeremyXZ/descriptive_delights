@@ -1,5 +1,5 @@
 'use client';
-
+import Quotes from "@/components/Quotes";
 import styled from "styled-components"
 
 const Home = () => {
@@ -10,10 +10,10 @@ const Home = () => {
             <Span>Descriptive Quotes</Span>
         </HeadWrapper>
         <Paragraph>
-            This is a descriptive scenes gallery where you can sumbit the amazing descriptive and imagery 
-            expressions you've found in your reading and share with other students.
+            This is a quote gallery where you can sumbit the amazing descriptive and imagery 
+            expressions you've found in your reading and share them with other students.
         </Paragraph>
-    
+        <Quotes/>
     </Wrapper>
   )
 }

@@ -1,6 +1,8 @@
 "use client"
 import React, {ReactNode} from "react";
 import styled from 'styled-components';
+import Nav from "@/components/Nav";
+import Provider from "@/components/Provider";
 
 const matadata= {
     title: "Descriptive Delights",
@@ -21,7 +23,7 @@ const RootLayout = ({children}: {children: ReactNode}) => {
                     </GradientWrapper>
                 </MainWrapper>
                 <AppWrapper>
-                    
+                    <Nav />
                     {children}
                 </AppWrapper>
             </>
