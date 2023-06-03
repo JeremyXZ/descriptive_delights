@@ -99,7 +99,7 @@ const AppWrapper = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 7xl;
+  max-width: 80rem;
   margin-left: auto;
   margin-right: auto;
   padding-left: 6px;

@@ -12,6 +12,7 @@ Major features to include:
  -- card component: title, user info (image, name), quotes, tags, copy button for the public, user info(image, name), quotes, tags, copy button, edit and delete buttons for logged-in users
 
 
+
 //Original Readme file:
 
 
