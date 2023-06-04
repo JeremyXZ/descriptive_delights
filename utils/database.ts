@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 
 let isConnected = false; // track the connection
 
@@ -10,12 +10,19 @@ export const connectToDB = async () => {
     return;
   }
 
+  const mongodbUri = process.env.MONGODB_URI || "";
+  if (!mongodbUri) {
+    console.log("MongoDB URI is not defined");
+    return;
+  }
+
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    const options = {
       dbName: "descriptive_delights",
-      useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
+    } as mongoose.ConnectOptions;
+
+    await mongoose.connect(mongodbUri, options);
 
     isConnected = true;
 

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { BlackButton, OutlineButton } from "./StyledButton";
 
 const Nav = () => {
-  // const {data: session} = useSession()
+  const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -18,7 +18,7 @@ const Nav = () => {
     };
     obtainProviders();
   }, []);
-  const isLoggedIn = true;
+
   return (
     <NavWrapper>
       <Link
@@ -40,10 +40,9 @@ const Nav = () => {
         />
         <Title>Shared Quotes</Title>
       </Link>
-
       {/* Desktop version */}
       <DesktopWrapper>
-        {isLoggedIn ? (
+        {session?.user ? (
           <DesktopFlexWrapper>
             <Link href="create-quote">
               <BlackButton type="button" onClick={signOut}>
@@ -53,7 +52,7 @@ const Nav = () => {
             <OutlineButton>Sign out</OutlineButton>
             <Link href="/profile">
               <Image
-                src={"/assets/icons/favicon.png"}
+                src={session?.user.image}
                 width={38}
                 height={38}
                 style={{ borderRadius: "9999px" }}
@@ -78,12 +77,13 @@ const Nav = () => {
           </>
         )}
       </DesktopWrapper>
+
       {/* mobile version */}
       <MobileWrapper>
-        {isLoggedIn ? (
+        {session?.user ? (
           <MobileFlexWrapper>
             <Image
-              src={"/assets/icons/favicon.png"}
+              src={session?.user.image}
               width={38}
               height={38}
               style={{ borderRadius: "9999px" }}
