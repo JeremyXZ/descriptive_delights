@@ -4,15 +4,17 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Form from "@/components/Form";
+import { UserProps } from "@/components/Provider";
 
 const CreateQuotes = () => {
   const router = useRouter();
+
   const { data: session } = useSession();
 
   const [submitting, setIsSubmitting] = useState(false);
   const [post, setPost] = useState({ quote: "", tag: "" });
 
-  const createQuote = async (e) => {
+  const createQuote = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -21,7 +23,7 @@ const CreateQuotes = () => {
         method: "POST",
         body: JSON.stringify({
           quote: post.quote,
-          userId: session?.user.id,
+          userId: (session?.user as UserProps)?.id ?? null,
           tag: post.tag,
         }),
       });

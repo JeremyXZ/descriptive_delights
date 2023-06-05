@@ -2,14 +2,14 @@
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 
-interface User {
+export interface UserProps {
   id: string;
   email: string;
   image: string;
 }
 
 interface Session {
-  user: User;
+  user: UserProps;
   expires: string;
 }
 
