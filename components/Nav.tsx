@@ -8,7 +8,7 @@ import { BlackButton, OutlineButton } from "./StyledButton";
 
 const Nav = () => {
   const { data: session } = useSession();
-  const [providers, setProviders] = useState(null);
+  const [providers, setProviders] = useState<null | Record<string, any>>(null);
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
@@ -45,14 +45,16 @@ const Nav = () => {
         {session?.user ? (
           <DesktopFlexWrapper>
             <Link href="create-quote">
-              <BlackButton type="button" onClick={signOut}>
-                Create Quotes
-              </BlackButton>
+              <BlackButton type="button">Create Quotes</BlackButton>
             </Link>
-            <OutlineButton>Sign out</OutlineButton>
+            <OutlineButton
+              onClick={signOut as React.MouseEventHandler<HTMLButtonElement>}
+            >
+              Sign out
+            </OutlineButton>
             <Link href="/profile">
               <Image
-                src={session?.user.image}
+                src={session?.user.image || "/assets/icons/favicon,png"}
                 width={38}
                 height={38}
                 style={{ borderRadius: "9999px" }}
@@ -83,7 +85,7 @@ const Nav = () => {
         {session?.user ? (
           <MobileFlexWrapper>
             <Image
-              src={session?.user.image}
+              src={session?.user.image || "/assets/icons/favicon,png"}
               width={38}
               height={38}
               style={{ borderRadius: "9999px" }}

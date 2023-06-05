@@ -13,6 +13,7 @@ const BlackButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: fit-content;
 
   &:hover {
     background-color: #fff;
