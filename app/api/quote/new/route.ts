@@ -3,7 +3,7 @@ import { connectToDB } from "@/utils/database";
 import { NextApiRequest } from "next";
 
 export const POST = async (request: NextApiRequest) => {
-  const { userId, quote, tag } = await JSON.parse(request.body);
+  const { userId, quote, tag } = await request.json();
 
   try {
     await connectToDB();

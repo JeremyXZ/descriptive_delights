@@ -11,7 +11,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         {type} and share your amazing quotes with your mates. Let's shine
         together in descriptive writing.
       </Paragraph>
-      <QuoteForm>
+      <QuoteForm onSubmit={handleSubmit}>
         <label>
           <LabelSpan>Your Quote</LabelSpan>
           <FormTextarea

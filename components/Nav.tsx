@@ -107,7 +107,7 @@ const Nav = () => {
                 </MenuLinkWrapper>
                 <MenuLinkWrapper>
                   <Link
-                    href="/create-quotes"
+                    href="/create-quote"
                     style={{ textDecoration: "none" }}
                     onClick={() => setShowMenu(false)}
                   >

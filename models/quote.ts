@@ -3,7 +3,7 @@ import { Schema, model, models } from "mongoose";
 const QuoteSchema = new Schema({
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "users",
   },
   quote: {
     type: String,
@@ -15,6 +15,6 @@ const QuoteSchema = new Schema({
   },
 });
 
-const Quote = models.quote || model("Quote", QuoteSchema);
+const Quote = models.Quote || model("Quote", QuoteSchema);
 
 export default Quote;
