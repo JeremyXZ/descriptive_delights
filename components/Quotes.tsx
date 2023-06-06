@@ -7,12 +7,8 @@ import QuoteCard from "./QuoteCard";
 const ListQuote = ({ data, handleTagClick }) => {
   return (
     <ListWrapper>
-      {data.map((quote) => (
-        <QuoteCard
-          key={quote._id}
-          quote={quote}
-          handleTagClick={handleTagClick}
-        />
+      {data.map((post) => (
+        <QuoteCard key={post._id} post={post} handleTagClick={handleTagClick} />
       ))}
     </ListWrapper>
   );
@@ -38,7 +34,7 @@ const QuotesDisplay = () => {
   }, []);
 
   const filterQuotes = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+    const regex = new RegExp(searchtext, "i");
     return allQuotes.filter(
       (item) =>
         regex.test(item.creator.username) ||
