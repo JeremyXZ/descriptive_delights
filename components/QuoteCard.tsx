@@ -1,6 +1,5 @@
 "use client";
 import styled from "styled-components";
-import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
@@ -20,29 +19,30 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 
   return (
     <CardWrapper>
-      <ProfileWrapper>
-        <ClickWrapper onClick={handleProfileClick}>
-          <Image
-            src={post.creator.image}
-            alt="user_image"
-            width={40}
-            height={40}
-            style={{ borderRadius: "9999px", objectFit: "contain" }}
-          />
+      {post.creator && (
+        <ProfileWrapper>
+          <ClickWrapper onClick={handleProfileClick}>
+            <Image
+              src={post.creator.image}
+              alt="user_image"
+              width={40}
+              height={40}
+              style={{ borderRadius: "9999px", objectFit: "contain" }}
+            />
 
-          <FlexWrapper>
-            <NameWrapper>{post.creator.username}</NameWrapper>
-            <EmailWrapper>{post.creator.email}</EmailWrapper>
-          </FlexWrapper>
-        </ClickWrapper>
-      </ProfileWrapper>
-
+            <FlexWrapper>
+              <NameWrapper>{post.creator.username}</NameWrapper>
+              <EmailWrapper>{post.creator.email}</EmailWrapper>
+            </FlexWrapper>
+          </ClickWrapper>
+        </ProfileWrapper>
+      )}
       <QuoteWrapper>{post.quote}</QuoteWrapper>
       <TagWrapper onClick={() => handleTagClick && handleTagClick(post.tag)}>
         #{post.tag}
       </TagWrapper>
 
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
+      {session?.user?.id === post?.creator?._id && pathName === "/profile" && (
         <ChangeWrapper>
           <GreenGradient onClick={handleEdit}>Edit</GreenGradient>
           <GreenGradient onClick={handleDelete}>Delete</GreenGradient>
@@ -55,18 +55,26 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 const CardWrapper = styled.div`
   flex: 1;
   break-inside: avoid;
-  border-radius: 0.375rem;
+  /* border-radius: 0.375rem; */
   border: 1px solid #d1d5db;
   background-color: rgba(255, 255, 255, 0.2);
   background-clip: padding-box;
-  padding: 1.5rem;
-  padding-bottom: 1rem;
+  padding: 2.5rem;
   backdrop-filter: blur(8px);
+  width: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 45%;
+  word-wrap: break-word;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   @media (min-width: 768px) {
     width: 360px;
+    border-radius: 50%;
   }
-  width: 100%;
-  height: fit-content;
 `;
 
 const ProfileWrapper = styled.div`
@@ -93,19 +101,21 @@ const NameWrapper = styled.h3`
   font-family: "satoshi", sans-serif;
   font-weight: 600;
   color: #1a202c;
+  margin-bottom: 0.5em;
 `;
 
 const EmailWrapper = styled.p`
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   color: #6b7280;
+  margin-top: -0.5em;
 `;
 
 const QuoteWrapper = styled.p`
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-family: "Satoshi", sans-serif;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   color: #4b5563;
 `;
 

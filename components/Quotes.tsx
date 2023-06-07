@@ -37,9 +37,9 @@ const QuotesDisplay = () => {
     const regex = new RegExp(searchtext, "i");
     return allQuotes.filter(
       (item) =>
-        regex.test(item.creator.username) ||
-        regex.test(item.tag) ||
-        regex.test(item.quote)
+        regex.test(item?.creator?.username) ||
+        regex.test(item?.tag) ||
+        regex.test(item?.quote)
     );
   };
 
@@ -85,14 +85,32 @@ const QuotesDisplay = () => {
 };
 
 const ListWrapper = styled.div`
-  margin-top: 4rem;
+  /* margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
 
   @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1280px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
+  } */
+  margin-top: 4rem;
+  & > * + * {
+    margin-top: 1.5rem;
+  }
+  padding-top: 2rem;
+
+  @media (min-width: 640px) {
+    column-count: 2;
+    column-gap: 1.5rem;
+  }
+
+  @media (min-width: 1280px) {
+    column-count: 3;
   }
 `;
 const QuoteWrapper = styled.section`
@@ -100,7 +118,7 @@ const QuoteWrapper = styled.section`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 36rem;
+  max-width: 50rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -113,7 +131,7 @@ const FormWrapper = styled.form`
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 const InputWrapper = styled.input`
@@ -130,8 +148,7 @@ const InputWrapper = styled.input`
   font-size: 0.875rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   font-weight: 500;
-  outline: none;
-  border-color: #000000;
+
   &:focus {
     border-color: #000000;
     outline: none;
