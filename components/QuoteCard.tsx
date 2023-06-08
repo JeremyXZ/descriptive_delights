@@ -10,42 +10,39 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const router = useRouter();
 
   const handleProfileClick = () => {
-    console.log(post);
+    if (post?.creator?._id === session?.user.id) return router.push("/profile");
 
-    if (post.creator._id === session?.user.id) return router.push("/profile");
-
-    router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
+    router.push(`/profile/${post.creator?._id}?name=${post.creator.username}`);
   };
 
   return (
     <CardWrapper>
-      {post.creator && (
-        <ProfileWrapper>
-          <ClickWrapper onClick={handleProfileClick}>
-            <Image
-              src={post.creator.image}
-              alt="user_image"
-              width={40}
-              height={40}
-              style={{ borderRadius: "9999px", objectFit: "contain" }}
-            />
+      <ProfileWrapper>
+        <ClickWrapper onClick={handleProfileClick}>
+          <Image
+            src={post?.creator?.image}
+            alt="user_image"
+            width={40}
+            height={40}
+            style={{ borderRadius: "9999px", objectFit: "contain" }}
+          />
 
-            <FlexWrapper>
-              <NameWrapper>{post.creator.username}</NameWrapper>
-              <EmailWrapper>{post.creator.email}</EmailWrapper>
-            </FlexWrapper>
-          </ClickWrapper>
-        </ProfileWrapper>
-      )}
+          <FlexWrapper>
+            <NameWrapper>{post?.creator?.username}</NameWrapper>
+            <EmailWrapper>{post?.creator?.email}</EmailWrapper>
+          </FlexWrapper>
+        </ClickWrapper>
+      </ProfileWrapper>
+
       <QuoteWrapper>{post.quote}</QuoteWrapper>
       <TagWrapper onClick={() => handleTagClick && handleTagClick(post.tag)}>
-        #{post.tag}
+        {post.tag}
       </TagWrapper>
 
       {session?.user?.id === post?.creator?._id && pathName === "/profile" && (
         <ChangeWrapper>
           <GreenGradient onClick={handleEdit}>Edit</GreenGradient>
-          <GreenGradient onClick={handleDelete}>Delete</GreenGradient>
+          <RedGradient onClick={handleDelete}>Delete</RedGradient>
         </ChangeWrapper>
       )}
     </CardWrapper>
@@ -121,11 +118,13 @@ const QuoteWrapper = styled.p`
 
 const TagWrapper = styled.p`
   font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   cursor: pointer;
   background: linear-gradient(to right, #3b82f6, #60a5fa);
   background-clip: text;
-  color: transparent;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 10px;
 `;
 
 const ChangeWrapper = styled.div`
@@ -140,9 +139,21 @@ const ChangeWrapper = styled.div`
 
 const GreenGradient = styled.p`
   font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  background-image: linear-gradient(to right, #68d391, #38b2ac);
+  background-image: linear-gradient(to right, #48bb78, #4299e1);
+  /* background-image: linear-gradient(to right, #c7d2fe, #a78bfa, #6b46c1); */
+  /* background-image: linear-gradient(to right, #e53e3e, #ecc94b, #f6e05e); */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+`;
+
+const RedGradient = styled.p`
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: linear-gradient(to right, rgb(204, 102, 204), rgb(233, 30, 99));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
