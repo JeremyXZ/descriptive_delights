@@ -5,7 +5,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <FormWrapper>
       <Tittle>
-        <SpanWrapper>{type} Post</SpanWrapper>
+        <SpanWrapper>{type} Quote</SpanWrapper>
       </Tittle>
       <Paragraph>
         {type} and share your amazing quotes with your mates. Let's shine

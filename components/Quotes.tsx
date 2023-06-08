@@ -85,19 +85,6 @@ const QuotesDisplay = () => {
 };
 
 const ListWrapper = styled.div`
-  /* margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-
-  @media (min-width: 640px) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-
-  @media (min-width: 1280px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  } */
   margin-top: 4rem;
   & > * + * {
     margin-top: 1.5rem;
