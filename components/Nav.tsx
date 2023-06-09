@@ -34,8 +34,8 @@ const Nav = () => {
         <Image
           src="/assets/icons/logo2.png"
           alt="my logo"
-          width={30}
-          height={30}
+          width={45}
+          height={45}
           style={{ objectFit: "contain" }}
         />
         <Title>Shared Quotes</Title>
@@ -157,7 +157,7 @@ const NavWrapper = styled.nav`
 const Title = styled.p`
   font-family: "Satoshi", sans-serif;
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   color: #000;
   letter-spacing: 0.05em;
 
