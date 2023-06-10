@@ -8,16 +8,19 @@ const BlackButton = styled.button`
   color: #fff;
   transition: all 0.3s;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   font-family: "Inter", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   height: fit-content;
+  text-decoration: none;
+  cursor: pointer;
 
   &:hover {
     background-color: #fff;
     color: #000;
+    text-decoration: none;
   }
 `;
 
@@ -29,12 +32,13 @@ const OutlineButton = styled.button`
   color: #000;
   transition: all 0.3s;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   font-family: "Inter", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   height: fit-content;
+  cursor: pointer;
 
   &:hover {
     background-color: #000;

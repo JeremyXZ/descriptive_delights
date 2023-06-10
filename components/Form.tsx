@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { formatDiagnosticsWithColorAndContext } from "typescript";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
@@ -46,7 +47,9 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           ></FormInput>
         </label>
         <CancelWrapper>
-          <Link href="/">Cancel</Link>
+          <Link style={{ fontSize: "1.2rem", textDecoration: "none" }} href="/">
+            Cancel
+          </Link>
           <CancelBtn type="submit" disabled={submitting}>
             {submitting ? `${type}ing...` : type}
           </CancelBtn>
@@ -88,12 +91,12 @@ const Paragraph = styled.p`
   text-align: left;
   max-width: 28rem;
   margin-top: 1.25rem;
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   color: #6b7280;
 
   @media (min-width: 640px) {
     .desc {
-      font-size: 1.25rem;
+      font-size: 1.45rem;
     }
   }
 `;
@@ -109,7 +112,7 @@ const QuoteForm = styled.form`
 const LabelSpan = styled.span`
   font-family: "Satoshi", sans-serif;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #4a5568;
 `;
 
@@ -120,7 +123,7 @@ const FormTextarea = styled.textarea`
   height: 200px;
   margin-top: 0.5rem;
   padding: 0.75rem;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   color: #a0aec0;
   outline: none;
 `;
@@ -131,7 +134,7 @@ const FormInput = styled.input`
   border-radius: 0.5rem;
   margin-top: 0.5rem;
   padding: 0.75rem;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   color: #718096;
   outline: 0;
 `;
@@ -139,15 +142,17 @@ const FormInput = styled.input`
 const CancelWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-left: 0.75rem;
   margin-right: 0.75rem;
   margin-bottom: 1.25rem;
   gap: 1rem;
+  font-size: 1.2rem;
 `;
 
 const CancelBtn = styled.button`
-  padding: 1.5px 5px;
-  font-size: 0.875rem;
+  padding: 2.5px 15px;
+  font-size: 1.2rem;
   background-color: #ffc300;
   border-radius: 9999px;
   color: #003bff;

@@ -108,7 +108,12 @@ const Nav = () => {
                 <MenuLinkWrapper>
                   <Link
                     href="/create-quote"
-                    style={{ textDecoration: "none" }}
+                    style={{
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "none",
+                      },
+                    }}
                     onClick={() => setShowMenu(false)}
                   >
                     Create Quotes
@@ -216,8 +221,10 @@ const MenuLinkWrapper = styled.div`
   font-size: 0.875rem;
   font-family: "Inter", sans-serif;
   color: #4a5568;
+  text-decoration: none;
   &:hover {
     color: #6b7280;
+    text-decoration: none;
   }
   font-weight: 500;
 `;

@@ -12,8 +12,13 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const handleProfileClick = () => {
     if (post?.creator?._id === session?.user.id) return router.push("/profile");
 
-    router.push(`/profile/${post.creator?._id}?name=${post.creator.username}`);
+    router.push(`/profile/${post.creator?._id}?name=${post.creator?.username}`);
   };
+
+  const tagArr = (post?.tag || "").split(" ");
+  // const tags = tagArr
+  //   .map((item) => <span key={item}>{"#" + item}</span>)
+  //   .join(" ");
 
   return (
     <CardWrapper>
@@ -29,14 +34,21 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 
           <FlexWrapper>
             <NameWrapper>{post?.creator?.username}</NameWrapper>
-            <EmailWrapper>{post?.creator?.email}</EmailWrapper>
+            {/* <EmailWrapper>{post?.creator?.email}</EmailWrapper> */}
           </FlexWrapper>
         </ClickWrapper>
       </ProfileWrapper>
 
       <QuoteWrapper>{post.quote}</QuoteWrapper>
-      <TagWrapper onClick={() => handleTagClick && handleTagClick(post.tag)}>
-        {post.tag}
+      <TagWrapper>
+        {tagArr.map((item) => (
+          <span
+            key={item}
+            onClick={(e) => handleTagClick && handleTagClick(item)}
+          >
+            {item + " "}
+          </span>
+        ))}
       </TagWrapper>
 
       {session?.user?.id === post?.creator?._id && pathName === "/profile" && (
@@ -83,7 +95,6 @@ const ProfileWrapper = styled.div`
 const ClickWrapper = styled.div`
   display: flex;
   flex: 1;
-  justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
@@ -99,6 +110,8 @@ const NameWrapper = styled.h3`
   font-weight: 600;
   color: #1a202c;
   margin-bottom: 0.5em;
+  justify-self: flex-start;
+  margin-top: -0.023em;
 `;
 
 const EmailWrapper = styled.p`
@@ -120,7 +133,7 @@ const TagWrapper = styled.p`
   font-family: "Inter", sans-serif;
   font-size: 1.2rem;
   cursor: pointer;
-  background: linear-gradient(to right, #3b82f6, #60a5fa);
+  /* background: linear-gradient(to right, #3b82f6, #60a5fa); */
   background-clip: text;
   color: black;
   padding: 0.5rem;

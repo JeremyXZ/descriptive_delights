@@ -35,19 +35,22 @@ const QuotesDisplay = () => {
 
   const filterQuotes = (searchtext) => {
     const regex = new RegExp(searchtext, "i");
-    return allQuotes.filter(
-      (item) =>
+    return allQuotes.filter((item) => {
+      const tags = (item?.tag || "").split(" ");
+      return (
         regex.test(item?.creator?.username) ||
-        regex.test(item?.tag) ||
+        tags.some((tag) => regex.test(tag)) ||
         regex.test(item?.quote)
-    );
+      );
+    });
   };
 
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
-    // debounce method
+    // debounce method "bundles" multiple keystrokes into a single call to the filter function,
+    //stop unnecessary frequent updates
     setSearchTimeout(
       setTimeout(() => {
         const searchResult = filterQuotes(e.target.value);
@@ -62,7 +65,7 @@ const QuotesDisplay = () => {
     const searchResult = filterQuotes(tagName);
     setSearchedResults(searchResult);
   };
-
+  console.log("searchResults", searchedResults);
   return (
     <QuoteWrapper>
       <FormWrapper>
@@ -73,6 +76,11 @@ const QuotesDisplay = () => {
           onChange={handleSearchChange}
           required
         />
+        {allQuotes && (
+          <p>
+            Total quotes: <span> {allQuotes.length}</span>
+          </p>
+        )}
       </FormWrapper>
       {/* Display all the quotes posted */}
       {searchText ? (
@@ -118,7 +126,21 @@ const FormWrapper = styled.form`
   width: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  gap: 1rem;
+  align-items: center;
+
+  & p {
+    display: flex;
+    align-items: center;
+
+    & span {
+      border-radius: 50%;
+      background-color: #ed64ed;
+      color: white;
+      padding: 0.6rem;
+      font-size: 1ren;
+    }
+  }
 `;
 
 const InputWrapper = styled.input`
@@ -132,7 +154,7 @@ const InputWrapper = styled.input`
   font-family: "satoshi", sans-serif;
   padding-left: 1.25rem;
   padding-right: 3rem;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   font-weight: 500;
 
