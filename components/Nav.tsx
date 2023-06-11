@@ -73,7 +73,7 @@ const Nav = () => {
                     signIn(provider.id);
                   }}
                 >
-                  Sign in
+                  Sign in with {provider.name}
                 </BlackButton>
               ))}
           </>
@@ -141,7 +141,7 @@ const Nav = () => {
                     signIn(provider.id);
                   }}
                 >
-                  Sign in
+                  Sign in with {provider.name}
                 </BlackButton>
               ))}
           </>
@@ -180,7 +180,7 @@ const DesktopWrapper = styled.div`
 `;
 const DesktopFlexWrapper = styled.div`
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
 
   @media (min-width: 768px) {
     gap: 5rem;
