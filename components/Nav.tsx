@@ -63,7 +63,7 @@ const Nav = () => {
             </Link>
           </DesktopFlexWrapper>
         ) : (
-          <>
+          <ButtonsWrapper>
             {providers &&
               Object.values(providers).map((provider) => (
                 <BlackButton
@@ -76,7 +76,18 @@ const Nav = () => {
                   Sign in with {provider.name}
                 </BlackButton>
               ))}
-          </>
+            <OutlineButton>
+              <Link
+                href="/auth/register"
+                style={{
+                  fontSize: "1.2rem",
+                  fontWeight: "bolder",
+                }}
+              >
+                Register
+              </Link>
+            </OutlineButton>
+          </ButtonsWrapper>
         )}
       </DesktopWrapper>
 
@@ -227,5 +238,10 @@ const MenuLinkWrapper = styled.div`
     text-decoration: none;
   }
   font-weight: 500;
+`;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 0.9rem;
 `;
 export default Nav;

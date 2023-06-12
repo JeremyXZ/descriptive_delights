@@ -17,6 +17,12 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+
+  password: {
+    type: String,
+    required: [true, "Password is required!"],
+    minlength: [8, "Password should have a minimum length of 8 characters!"],
+  },
 });
 
 const User = models.User || model("User", UserSchema);

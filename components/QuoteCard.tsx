@@ -41,9 +41,9 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 
       <QuoteWrapper>{post.quote}</QuoteWrapper>
       <TagWrapper>
-        {tagArr.map((item) => (
+        {tagArr.map((item, index) => (
           <span
-            key={item}
+            key={item + "-" + index}
             onClick={(e) => handleTagClick && handleTagClick(item)}
           >
             {item + " "}
@@ -129,7 +129,7 @@ const QuoteWrapper = styled.p`
   color: #4b5563;
 `;
 
-const TagWrapper = styled.p`
+const TagWrapper = styled.div`
   font-family: "Inter", sans-serif;
   font-size: 1.2rem;
   cursor: pointer;

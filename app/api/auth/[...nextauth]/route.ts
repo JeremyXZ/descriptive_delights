@@ -44,12 +44,12 @@ const handler = NextAuth({
 
       async authorize(credentials, req) {
         const { username, password } = credentials as any;
-
+        // const hashedPassword = await bcrypt.hash(password, 10);
         // Retrieve the user from MongoDB based on the username
         const user = await User.findOne({ username });
 
         // If the user exists and the password matches, return the user object
-        if (user && user.password === password) {
+        if (user && (await bcrypt.compare(password, user.password))) {
           return user;
         }
 
@@ -66,23 +66,60 @@ const handler = NextAuth({
       session.user.id = sessionUser._id.toString();
       return session;
     },
-    async signIn({ account, profile, user, credentials }) {
+    // async signIn({ account, profile, user, credentials }) {
+    //   try {
+    //     // serverless function: only when get called, make a connection to the database
+    //     await connectToDB();
+    //     //check if the user  already exists
+    //     const userExist = await User.findOne({
+    //       username: profile.username,
+    //     });
+    //     //if not, create a new database
+
+    //     if (!userExist) {
+    //       await User.create({
+    //         email: profile.email,
+    //         username: profile.name.replace(" ", "").toLowerCase(),
+    //         image: profile.picture,
+    //       });
+    //     }
+    //     return true;
+    //   } catch (error) {
+    //     console.log("Error checking if user exists: ", error.message);
+    //     return false;
+    //   }
+    // },
+
+    async signIn({ provider, account, profile, user, credentials }) {
       try {
         // serverless function: only when get called, make a connection to the database
         await connectToDB();
-        //check if the user  already exists
-        const userExist = await User.findOne({
-          email: profile.email,
-        });
-        //if not, create a new database
 
+        // Check if the user already exists based on the username or email
+        const userExist = await User.findOne({
+          $or: [{ username: credentials.username }, { email: profile.email }],
+        });
+
+        // If the user does not exist, create a new user in the database
         if (!userExist) {
-          await User.create({
-            email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
-            image: profile.picture,
-          });
+          const newUser = {
+            username: credentials.username,
+          };
+
+          // Check if the provider is Google
+          if (provider === "google") {
+            newUser.email = profile.email;
+            newUser.image = profile.picture;
+          } else {
+            // Provider is credentials, include password
+            newUser.email = ""; // Set a placeholder value for email
+            newUser.password = credentials.password;
+          }
+
+          // Create the user in the database
+          await User.create(newUser);
         }
+
         return true;
       } catch (error) {
         console.log("Error checking if user exists: ", error.message);

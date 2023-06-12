@@ -1,7 +1,7 @@
 import Quote from "@/models/quote";
 import { connectToDB } from "@/utils/database";
 
-export const GET = async (request) => {
+export const GET = async () => {
   try {
     await connectToDB();
 
