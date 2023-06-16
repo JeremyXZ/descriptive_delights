@@ -45,9 +45,14 @@ const EditQuotes = () => {
 
       if (response.ok) {
         router.push("/");
+        // const data = await response.json();
+        // console.log(data);
+        // router.push("/");
+        console.log("response from update-quote", response);
       }
     } catch (error) {
       console.log(error);
+      // console.log("Error:", response.status);
     } finally {
       setIsSubmitting(false);
     }

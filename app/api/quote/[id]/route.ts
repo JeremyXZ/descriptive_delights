@@ -19,7 +19,10 @@ export const GET = async (
   }
 };
 
-export const PATCH = async (request, { params }) => {
+export const PATCH = async (
+  request: NextApiRequest,
+  { params }: { params: Params }
+) => {
   const { quote, tag } = await request.json();
 
   try {
@@ -44,7 +47,10 @@ export const PATCH = async (request, { params }) => {
   }
 };
 
-export const DELETE = async (request, { params }) => {
+export const DELETE = async (
+  request: NextApiRequest,
+  { params }: { params: Params }
+) => {
   try {
     await connectToDB();
 
