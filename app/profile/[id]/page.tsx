@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 import Profile from "@/components/Profile";
 
-const UserProfile = ({ params }) => {
+const UserProfile = ({ params }: { params: Params }) => {
   const searchParams = useSearchParams();
   const userName = searchParams.get("name");
 
