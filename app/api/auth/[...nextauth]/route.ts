@@ -8,6 +8,8 @@ import { Profile, Session } from "next-auth";
 export interface CustomSessionUser extends DefaultSession {
   id: string;
 }
+const googleClientId = process.env.GOOGLE_CLIENT_ID || "";
+const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET || "";
 
 interface ExtendedProfile extends Profile {
   picture: string;
@@ -16,8 +18,8 @@ interface ExtendedProfile extends Profile {
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      clientId: googleClientId,
+      clientSecret: googleClientSecret,
     }),
   ],
   callbacks: {
@@ -25,7 +27,7 @@ const handler = NextAuth({
       const sessionUser = await User.findOne({
         email: session?.user?.email,
       });
-      // session.user.id = sessionUser._id.toString();
+
       if (sessionUser && session.user) {
         (session.user as CustomSessionUser).id = sessionUser._id.toString();
       }

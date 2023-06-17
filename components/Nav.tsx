@@ -5,11 +5,13 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, getProviders, useSession } from "next-auth/react";
 import styled from "styled-components";
 import { BlackButton, OutlineButton } from "./StyledButton";
+import { useRouter } from "next/navigation";
 
 const Nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState<null | Record<string, any>>(null);
   const [showMenu, setShowMenu] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const obtainProviders = async () => {
@@ -18,6 +20,11 @@ const Nav = () => {
     };
     obtainProviders();
   }, []);
+
+  const handleSignout = async () => {
+    await signOut();
+    router.push("/");
+  };
 
   return (
     <NavWrapper>
@@ -106,17 +113,10 @@ const Nav = () => {
                   </Link>
                 </MenuLinkWrapper>
                 <MenuLinkWrapper>
-                  <Link
-                    href="/create-quote"
-                    style={{
-                      textDecoration: "none",
-                      "&:hover": {
-                        textDecoration: "none",
-                      },
-                    }}
-                    onClick={() => setShowMenu(false)}
-                  >
-                    Create Quotes
+                  <Link href="/create-quote" passHref>
+                    <CustomLink onClick={() => setShowMenu(false)}>
+                      Create Quotes
+                    </CustomLink>
                   </Link>
                 </MenuLinkWrapper>
                 <BlackButton
@@ -228,4 +228,12 @@ const MenuLinkWrapper = styled.div`
   }
   font-weight: 500;
 `;
+const CustomLink = styled.a`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
 export default Nav;

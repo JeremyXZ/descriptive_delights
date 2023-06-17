@@ -1,5 +1,6 @@
 import QuoteCard from "./QuoteCard";
 import styled from "styled-components";
+import { Post } from "./QuoteCard";
 
 export type HandleEditFunction = (post: { _id: string }) => void;
 export type HandleDeleteFunction = (post: { _id: string }) => void;
@@ -7,7 +8,7 @@ export type HandleDeleteFunction = (post: { _id: string }) => void;
 interface ProfileProps {
   name: string | null;
   desc: string;
-  data: string[];
+  data: Post[];
   handleEdit?: HandleEditFunction;
   handleDelete?: HandleDeleteFunction;
 }

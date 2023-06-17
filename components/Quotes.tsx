@@ -3,8 +3,14 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import QuoteCard from "./QuoteCard";
+import { HandleTagClickFunction, Post } from "./QuoteCard";
 
-const ListQuote = ({ data, handleTagClick }) => {
+interface listQuoteProps {
+  data: Post[];
+  handleTagClick: HandleTagClickFunction;
+}
+
+const ListQuote = ({ data, handleTagClick }: listQuoteProps) => {
   return (
     <ListWrapper>
       {data.map((post) => (
@@ -19,7 +25,9 @@ const QuotesDisplay = () => {
 
   // Search states
   const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null);
+  const [searchTimeout, setSearchTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  );
   const [searchedResults, setSearchedResults] = useState([]);
 
   const fetchQuotes = async () => {
@@ -33,33 +41,36 @@ const QuotesDisplay = () => {
     fetchQuotes();
   }, []);
 
-  const filterQuotes = (searchtext) => {
+  const filterQuotes = (searchtext: string) => {
     const regex = new RegExp(searchtext, "i");
-    return allQuotes.filter((item) => {
+    return allQuotes.filter((item: Post) => {
       const tags = (item?.tag || "").split(" ");
       return (
-        regex.test(item?.creator?.username) ||
+        // using the nullish coalescing operator (??) with an empty string
+        // fallback value can ensure that the username property is treated as
+        // a string even if it is undefined.
+        regex.test(item?.creator?.username ?? "") ||
         tags.some((tag) => regex.test(tag)) ||
         regex.test(item?.quote)
       );
     });
   };
 
-  const handleSearchChange = (e) => {
-    clearTimeout(searchTimeout);
-    setSearchText(e.target.value);
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    searchTimeout && clearTimeout(searchTimeout);
+    setSearchText((e.target as HTMLInputElement).value);
 
     // debounce method "bundles" multiple keystrokes into a single call to the filter function,
     //stop unnecessary frequent updates
     setSearchTimeout(
       setTimeout(() => {
-        const searchResult = filterQuotes(e.target.value);
+        const searchResult = filterQuotes((e.target as HTMLInputElement).value);
         setSearchedResults(searchResult);
       }, 500)
     );
   };
 
-  const handleTagClick = (tagName) => {
+  const handleTagClick = (tagName: string) => {
     setSearchText(tagName);
 
     const searchResult = filterQuotes(tagName);

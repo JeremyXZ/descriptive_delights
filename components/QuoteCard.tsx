@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { HandleEditFunction, HandleDeleteFunction } from "./Profile";
+import { type CustomSessionUser } from "../app/api/auth/[...nextauth]/route";
 
 export type HandleTagClickFunction = (tagname: string) => void;
 
@@ -38,7 +39,7 @@ const QuoteCard = ({
   const router = useRouter();
 
   const handleProfileClick = () => {
-    if (post?.creator?._id === session?.user?.id)
+    if (post?.creator?._id === (session?.user as CustomSessionUser)?.id)
       return router.push("/profile");
 
     router.push(`/profile/${post.creator?._id}?name=${post.creator?.username}`);
@@ -80,12 +81,17 @@ const QuoteCard = ({
         ))}
       </TagWrapper>
 
-      {session?.user?.id === post?.creator?._id && pathName === "/profile" && (
-        <ChangeWrapper>
-          <GreenGradient onClick={handleEdit}>Edit</GreenGradient>
-          <RedGradient onClick={handleDelete}>Delete</RedGradient>
-        </ChangeWrapper>
-      )}
+      {(session?.user as CustomSessionUser)?.id === post?.creator?._id &&
+        pathName === "/profile" && (
+          <ChangeWrapper>
+            <GreenGradient onClick={() => handleEdit && handleEdit(post)}>
+              Edit
+            </GreenGradient>
+            <RedGradient onClick={() => handleDelete && handleDelete(post)}>
+              Delete
+            </RedGradient>
+          </ChangeWrapper>
+        )}
     </CardWrapper>
   );
 };
