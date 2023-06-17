@@ -1,6 +1,7 @@
 "use client";
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
+// import { Session } from "next-auth";
 
 export interface UserProps {
   id: string;
@@ -15,7 +16,7 @@ interface Session {
 
 interface ProviderProps {
   children: ReactNode;
-  session: Session | undefined | null;
+  session?: Session | undefined | null;
 }
 
 // like context api's context provider, to provide session data and manage session state

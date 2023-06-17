@@ -1,7 +1,24 @@
 import QuoteCard from "./QuoteCard";
 import styled from "styled-components";
 
-const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
+export type HandleEditFunction = (post: { _id: string }) => void;
+export type HandleDeleteFunction = (post: { _id: string }) => void;
+
+interface ProfileProps {
+  name: string | null;
+  desc: string;
+  data: string[];
+  handleEdit?: HandleEditFunction;
+  handleDelete?: HandleDeleteFunction;
+}
+
+const Profile = ({
+  name,
+  desc,
+  data,
+  handleEdit,
+  handleDelete,
+}: ProfileProps) => {
   return (
     <Wrapper>
       <HeadWrapper>

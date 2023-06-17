@@ -2,12 +2,13 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@/utils/database";
 import User from "@/models/user";
-import { type DefaultSession } from "next-auth";
-import { Session, Profile } from "next-auth";
+// import { type DefaultSession } from "next-auth";
+import { Profile } from "next-auth";
+import { ISession } from "@/components/Provider";
 
-export interface CustomSessionUser extends DefaultSession {
-  id: string;
-}
+// export interface CustomSessionUser extends DefaultSession {
+//   id: string;
+// }
 
 interface ExtendedProfile extends Profile {
   picture: string;
@@ -21,13 +22,13 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session }) {
+    async session({ session }: { session: ISession }) {
       const sessionUser = await User.findOne({
         email: session?.user?.email,
       });
       // session.user.id = sessionUser._id.toString();
       if (sessionUser && session.user) {
-        (session.user as CustomSessionUser).id = sessionUser._id.toString();
+        session.user.id = sessionUser._id.toString();
       }
 
       return session;

@@ -3,14 +3,43 @@ import styled from "styled-components";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import { HandleEditFunction, HandleDeleteFunction } from "./Profile";
 
-const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
+export type HandleTagClickFunction = (tagname: string) => void;
+
+interface Creator {
+  _id: string;
+  username: string;
+  image: string;
+}
+
+export interface Post {
+  _id: string;
+  creator?: Creator;
+  tag?: string;
+  quote: string;
+}
+
+interface QuoteCardProps {
+  post: Post;
+  handleEdit?: HandleEditFunction;
+  handleDelete?: HandleDeleteFunction;
+  handleTagClick?: HandleTagClickFunction;
+}
+
+const QuoteCard = ({
+  post,
+  handleEdit,
+  handleDelete,
+  handleTagClick,
+}: QuoteCardProps) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
 
   const handleProfileClick = () => {
-    if (post?.creator?._id === session?.user.id) return router.push("/profile");
+    if (post?.creator?._id === session?.user?.id)
+      return router.push("/profile");
 
     router.push(`/profile/${post.creator?._id}?name=${post.creator?.username}`);
   };
@@ -25,7 +54,7 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       <ProfileWrapper>
         <ClickWrapper onClick={handleProfileClick}>
           <Image
-            src={post?.creator?.image}
+            src={post?.creator?.image ?? "/assets/images/dummy_user.jpg"}
             alt="user_image"
             width={40}
             height={40}
