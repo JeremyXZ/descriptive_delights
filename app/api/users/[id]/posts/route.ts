@@ -1,7 +1,12 @@
 import Quote from "@/models/quote";
 import { connectToDB } from "@/utils/database";
+import { NextApiRequest } from "next";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-export const GET = async (request, { params }) => {
+export const GET = async (
+  request: NextApiRequest,
+  { params }: { params: Params }
+) => {
   try {
     await connectToDB();
 

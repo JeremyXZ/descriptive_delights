@@ -9,14 +9,14 @@ export interface UserProps {
   image: string;
 }
 
-interface Session {
+export interface ISession {
   user: UserProps;
   expires: string;
 }
 
 interface ProviderProps {
   children: ReactNode;
-  session?: Session | undefined | null;
+  session?: ISession | undefined | null;
 }
 
 // like context api's context provider, to provide session data and manage session state
