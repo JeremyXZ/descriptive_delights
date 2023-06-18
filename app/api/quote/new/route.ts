@@ -1,8 +1,8 @@
 import Quote from "@/models/quote";
 import { connectToDB } from "@/utils/database";
-import { NextApiRequest } from "next";
+// import { NextApiRequest } from "next";
 
-export const POST = async (request: NextApiRequest) => {
+export const POST = async (request: Request) => {
   const { userId, quote, tag } = await request.json();
 
   try {

@@ -1,12 +1,9 @@
 import Quote from "@/models/quote";
 import { connectToDB } from "@/utils/database";
-import { NextApiRequest } from "next";
+// import { Request } from "next";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
-export const GET = async (
-  request: NextApiRequest,
-  { params }: { params: Params }
-) => {
+export const GET = async (request: Request, { params }: { params: Params }) => {
   try {
     await connectToDB();
 
@@ -20,7 +17,7 @@ export const GET = async (
 };
 
 export const PATCH = async (
-  request: NextApiRequest,
+  request: Request,
   { params }: { params: Params }
 ) => {
   const { quote, tag } = await request.json();
@@ -48,7 +45,7 @@ export const PATCH = async (
 };
 
 export const DELETE = async (
-  request: NextApiRequest,
+  request: Request,
   { params }: { params: Params }
 ) => {
   try {
