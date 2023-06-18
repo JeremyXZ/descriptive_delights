@@ -78,7 +78,7 @@ const Description = styled.p`
 const ListWrapper = styled.div`
   margin-top: 2.5rem;
   & > * + * {
-    margin-top: 1.5rem;
+    margin: 1.5rem;
   }
   padding-top: 2rem;
 

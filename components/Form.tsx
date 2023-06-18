@@ -1,15 +1,24 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { formatDiagnosticsWithColorAndContext } from "typescript";
+import { Post } from "./QuoteCard";
 
-const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+interface FormProps {
+  type: string;
+  post: { quote: string; tag: string };
+  setPost: React.Dispatch<React.SetStateAction<{ quote: string; tag: string }>>;
+  submitting: boolean;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+}
+
+const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
   return (
     <FormWrapper>
       <Tittle>
         <SpanWrapper>{type} Quote</SpanWrapper>
       </Tittle>
       <Paragraph>
-        {type} and share your amazing quotes with your mates. Let's shine
+        {type} and share your amazing quotes with your mates. Let&apos;s shine
         together in descriptive writing.
       </Paragraph>
       <QuoteForm onSubmit={handleSubmit}>

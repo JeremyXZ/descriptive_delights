@@ -99,20 +99,19 @@ const QuoteCard = ({
 const CardWrapper = styled.div`
   flex: 1;
   break-inside: avoid;
-  /* border-radius: 0.375rem; */
   border: 1px solid #d1d5db;
   background-color: rgba(255, 255, 255, 0.2);
   background-clip: padding-box;
   padding: 2.5rem;
   backdrop-filter: blur(8px);
   width: 100%;
-  border-radius: 50%;
+  border-radius: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 45%;
   word-wrap: break-word;
+  white-space: normal;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
   @media (min-width: 768px) {
@@ -162,6 +161,9 @@ const QuoteWrapper = styled.p`
   font-family: "Satoshi", sans-serif;
   font-size: 1.2rem;
   color: #4b5563;
+  white-space: normal; /* Allow text to wrap within the circle */
+  word-wrap: break-word;
+  padding: 0 2rem;
 `;
 
 const TagWrapper = styled.p`
@@ -176,13 +178,13 @@ const TagWrapper = styled.p`
 `;
 
 const ChangeWrapper = styled.div`
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   border-top: 1px solid #e5e7eb;
-  padding-top: 0.75rem;
+  /* padding-top: 0.75rem; */
 `;
 
 const GreenGradient = styled.p`

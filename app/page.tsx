@@ -12,8 +12,8 @@ const Home = () => {
       </HeadWrapper>
       <Paragraph>
         This is a quote gallery where you can sumbit the amazing descriptive and
-        imagery expressions you've found in your reading and share them with
-        other students.
+        imagery expressions you&apos;ve found in your reading and share them
+        with other students.
       </Paragraph>
       <QuotesDisplay />
     </Wrapper>
@@ -63,7 +63,7 @@ const Span = styled.span`
 
 const Paragraph = styled.p`
   margin-top: 1.25rem;
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   color: #6b7280;
   max-width: 36rem;
   text-align: center;
