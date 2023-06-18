@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { formatDiagnosticsWithColorAndContext } from "typescript";
+
 import { Post } from "./QuoteCard";
 
 interface FormProps {
