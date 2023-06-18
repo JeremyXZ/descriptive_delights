@@ -3,8 +3,9 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import { type CustomSessionUser } from "../api/auth/[...nextauth]/route";
 import Profile from "@/components/Profile";
+// import { Post as PostProps } from "@/components/QuoteCard";
 
 const ProfilePage = () => {
   const router = useRouter();
@@ -12,22 +13,32 @@ const ProfilePage = () => {
 
   const [myPosts, setMyPosts] = useState([]);
 
+  const user: CustomSessionUser = session?.user as CustomSessionUser;
+
+  interface PostProps {
+    _id: string;
+  }
+
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      // const response = await fetch(`/api/users/${session?.user?.id}/posts`);
+      const response = await fetch(`/api/users/${user?.id}/posts`);
       const data = await response.json();
 
       setMyPosts(data);
     };
 
-    if (session?.user.id) fetchPosts();
-  }, [session?.user.id]);
+    //   if (session?.user?.id) fetchPosts();
+    // }, [session?.user?.id]);
 
-  const handleEdit = (post) => {
+    if (user?.id) fetchPosts();
+  }, [user?.id]);
+
+  const handleEdit = (post: PostProps) => {
     router.push(`/update-quote?id=${post._id}`);
   };
 
-  const handleDelete = async (post) => {
+  const handleDelete = async (post: PostProps) => {
     const hasConfirmed = confirm("Are you sure you want to delete this quote?");
 
     if (hasConfirmed) {
@@ -36,7 +47,9 @@ const ProfilePage = () => {
           method: "DELETE",
         });
 
-        const filteredPosts = myPosts.filter((item) => item._id !== post._id);
+        const filteredPosts = myPosts.filter(
+          (item: { _id: string }) => item._id !== post._id
+        );
 
         setMyPosts(filteredPosts);
       } catch (error) {

@@ -1,8 +1,8 @@
 import Quote from "@/models/quote";
 import { connectToDB } from "@/utils/database";
-import { NextApiRequest } from "next";
+// import { NextApiRequest } from "next";
 
-export const GET = async (request: NextApiRequest) => {
+export const GET = async (request: Request) => {
   try {
     await connectToDB();
 
