@@ -29,7 +29,7 @@ const Wrapper = styled.section`
 `;
 const HeadWrapper = styled.h1`
   margin-top: 1.25rem;
-  font-size: 3.75rem;
+  font-size: 2.75rem;
   font-weight: 800;
   line-height: 1.15;
   color: #000000;
