@@ -25,6 +25,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
         <label>
           <LabelSpan>Your Quote</LabelSpan>
           <FormTextarea
+            maxLength={800}
             value={post.quote}
             onChange={(e) =>
               setPost({
@@ -32,7 +33,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
                 quote: e.target.value,
               })
             }
-            placeholder="Paste your quote here"
+            placeholder="Paste your quote here, 150 word at max"
             required
           ></FormTextarea>
         </label>
@@ -40,7 +41,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: FormProps) => {
           <LabelSpan>
             Tag{" "}
             <span style={{ fontWeight: 400 }}>
-              #weather, #beach, #tears, #laugh
+              #cold, #beach, #tears, #happy
             </span>
           </LabelSpan>
           <FormInput
