@@ -4,12 +4,12 @@ A web site for students to share imagery and emotive sentences (verbatim quotes)
 
 ## Primary Technologies Used:
 
-Next.js 13.4: A popular React framework for building scalable and performant web applications.
-MongoDB: A flexible and scalable NoSQL database for storing and managing data.
-Styled Components: A CSS-in-JS library for styling React components, providing a convenient and maintainable approach to styling.
-TypeScript: A statically typed superset of JavaScript that enhances code quality and developer productivity by enabling type checking and better tooling support.
-"OAuth 2.0 Client IDs from Google: Implemented OAuth 2.0 Client IDs from Google to enable secure and seamless user authentication. This allows users to sign in using their Google accounts and access the application's protected resources.
-Responsive design: suitable for both desktop and mobile screens.
+- Next.js 13.4: A popular React framework for building scalable and performant web applications.
+- MongoDB: A flexible and scalable NoSQL database for storing and managing data.
+- Styled Components: A CSS-in-JS library for styling React components, providing a convenient and maintainable approach to styling.
+- TypeScript: A statically typed superset of JavaScript that enhances code quality and developer productivity by enabling type checking and better tooling support.
+- "OAuth 2.0 Client IDs from Google: Implemented OAuth 2.0 Client IDs from Google to enable secure and seamless user authentication. This allows users to sign in using their Google accounts and access the application's protected resources.
+- Responsive design: suitable for both desktop and mobile screens.
 
 ## Major features to include:
 
