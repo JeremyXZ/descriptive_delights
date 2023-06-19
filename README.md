@@ -1,4 +1,4 @@
-A web site for students to share imagery and emotive sentences (verbatim quotes) they've come across in their reading so as to improve their descriptive writing at schools.
+A web site for students to share imagery and emotive sentences (verbatim quotes) they've come across in their reading so as to improve their descriptive writing (partiuclarly for GCSE exams) at schools.
 
 ## Demo: https://descriptive-delights.netlify.app/
 
