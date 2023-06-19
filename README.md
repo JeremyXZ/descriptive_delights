@@ -1,20 +1,27 @@
-
 A web site for students to share imagery and emotive sentences (verbatim quotes) they've come across in their reading so as to improve their descriptive writing at schools.
 
-Major features to include:
-- authenfication: need register and sign-in  with username and password, a verified user can submit and edit their own quotes 
-- mongo data: to store all quotes and users
-- Next.js to run the frontend UI as well as the backend server
-- Major components/pages:
- -- navigation: logo, title, create-quote button button, sign-in/sign-out button, user profile link
- -- profile page: title, instruction, own quotes listed (in card format)
- -- create quote page: title, instruction, form(including two labels and input fields for quotes and tags respectively), cancel and create buttons
- -- card component: title, user info (image, name), quotes, tags, copy button for the public, user info(image, name), quotes, tags, copy button, edit and delete buttons for logged-in users
+## Demo: https://descriptive-delights.netlify.app/
 
+## Primary Technologies Used:
 
+Next.js 13.4: A popular React framework for building scalable and performant web applications.
+MongoDB: A flexible and scalable NoSQL database for storing and managing data.
+Styled Components: A CSS-in-JS library for styling React components, providing a convenient and maintainable approach to styling.
+TypeScript: A statically typed superset of JavaScript that enhances code quality and developer productivity by enabling type checking and better tooling support.
+"OAuth 2.0 Client IDs from Google: Implemented OAuth 2.0 Client IDs from Google to enable secure and seamless user authentication. This allows users to sign in using their Google accounts and access the application's protected resources.
+Responsive design: suitable for both desktop and mobile screens.
+
+## Major features to include:
+
+- Click "Sign In" to log in with your Google credentials, and a verified user can submit and edit their own quotes.
+- Click Logo to go back to Home page.
+- Click "Create Quote" to paste in your quote and add the relevant tag(s).
+- Click your user image (at top right corner of the page or at top of your quote) to go to your profile page where all your quotes are shown and you can edit or delete your quotes.
+- Click others' user names at the top of a quote to go to their profile page to view all the quotes they submitted.
+- Click a tag or type in a search term in the search box to retrieve the quotes or their tags that contain that tag or that search term.
+- Click "Clear" next to the search box to clear search terms and show all the quotes availabe
 
 //Original Readme file:
-
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
