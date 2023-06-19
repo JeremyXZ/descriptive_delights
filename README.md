@@ -11,7 +11,7 @@ A web site for students to share imagery and emotive sentences (verbatim quotes)
 - "OAuth 2.0 Client IDs from Google: Implemented OAuth 2.0 Client IDs from Google to enable secure and seamless user authentication. This allows users to sign in using their Google accounts and access the application's protected resources.
 - Responsive design: suitable for both desktop and mobile screens.
 
-## Major features to include:
+## Major Features:
 
 - Click "Sign In" to log in with your Google credentials, and a verified user can submit and edit their own quotes.
 - Click Logo to go back to Home page.
