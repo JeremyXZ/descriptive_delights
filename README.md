@@ -18,8 +18,8 @@ A web site for students to share imagery and emotive sentences (verbatim quotes)
 - Click "Create Quote" to paste in your quote and add the relevant tag(s).
 - Click your user image (at top right corner of the page or at top of your quote) to go to your profile page where all your quotes are shown and you can edit or delete your quotes.
 - Click others' user names at the top of a quote to go to their profile page to view all the quotes they submitted.
-- Click a tag or type in a search term in the search box to retrieve the quotes or their tags that contain that tag or that search term.
-- Click "Clear" next to the search box to clear search terms and show all the quotes availabe
+- Click a tag or type a search term into the search box to show only the quotes that contain that tag or that search term.
+- Click "Clear" next to the search box to clear search terms and show all the quotes availabe.
 
 //Original Readme file:
 
