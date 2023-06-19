@@ -105,7 +105,7 @@ const CardWrapper = styled.div`
   padding: 2.5rem;
   backdrop-filter: blur(8px);
   width: 100%;
-  border-radius: 45%;
+  border-radius: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +116,7 @@ const CardWrapper = styled.div`
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
   @media (min-width: 768px) {
     width: 360px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
   }
 `;
 

@@ -117,7 +117,7 @@ const ListWrapper = styled.div`
 
   @media (min-width: 640px) {
     column-count: 2;
-    column-gap: 1.5rem;
+    column-gap: 1.2rem;
   }
 
   @media (min-width: 1280px) {
